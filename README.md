@@ -3,6 +3,11 @@
 ##Summary
 Web CLI tool for Asp.Net Core using JQuery Terminal and SignalR
 
+##Demo
+[Click here for video]https://cdn.whole.school/videos/WebCLI.mp4
+
+Interactive demo available soon.
+
 ##Architecture
 
 - DotNetCore 1.0
