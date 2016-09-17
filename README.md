@@ -1,7 +1,7 @@
-# AspNetWebCLI
+# AspNet Web CLI
 
 ##Summary
-Web CLI tool for Asp.Net Core using JQuery Terminal and SignalR
+Web CLI tool for Asp.Net Core using JQuery Terminal and SignalR. Pass commands to .Net Core backend for processing with realtime updates pushed back to the terminal client. Source includes 'ping' command however can easily be extended to handle other commands and tasks.
 
 ##Demo
 [Click here for video](https://cdn.whole.school/videos/WebCLI.mp4)
