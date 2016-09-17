@@ -16,20 +16,36 @@
 
     <script>
         jQuery(function ($, undefined) {
+
+            var cli = $.connection.commandLineInterfaceHub;
+
             $('#terminal').terminal(function (command, term) {
                 if (command !== '') {
-                    var result = window.eval(command);
-                    if (result != undefined) {
-                        term.echo(String(result));
-                    }
+                   
+                    cli.server.sendCommand(command);
                 }
-            }, {
-                greetings: 'AspNetCore CLI \nSteven Knox (C) 2016 \ntwitter.com/stevenknox101\n\ntype "help" to get available commands\n',
+            },
+            {
+                greetings: 'AspNetCore Web CLI \nSteven Knox (C) 2016 \ntwitter.com/stevenknox101\n\ntype "help" to get available commands\n',
                 name: 'webcli',
                 height: 1000,
                 width: 1000,
-                prompt: 'web cli> '
+                prompt: 'web-cli> '
+            });
+
+            cli.client.commandResponse = function (response) {
+                if (response != undefined) {
+                    var term = $.terminal.active();
+                   term.echo(String(response));
+                }
+            };
+
+            $.connection.hub.start().done(function () {
             });
         });
+
+      
+
+
     </script>
 }
