@@ -1,0 +1,35 @@
+﻿
+
+<div  id="terminal" class="terminal" style="width: 500px; height: 500px;">
+    <div class="cmd" style="width: 100%;">
+        <span></span>
+        <span class="cursor">&nbsp;</span>
+        <span></span>
+        <textarea class="clipboard"></textarea>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/0.11.6/js/jquery.terminal.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/0.11.6/css/jquery.terminal.min.css" rel="stylesheet" />
+
+    <script>
+        jQuery(function ($, undefined) {
+            $('#terminal').terminal(function (command, term) {
+                if (command !== '') {
+                    var result = window.eval(command);
+                    if (result != undefined) {
+                        term.echo(String(result));
+                    }
+                }
+            }, {
+                greetings: 'AspNetCore CLI \nSteven Knox (C) 2016 \ntwitter.com/stevenknox101\n\ntype "help" to get available commands\n',
+                name: 'webcli',
+                height: 1000,
+                width: 1000,
+                prompt: 'web cli> '
+            });
+        });
+    </script>
+}
