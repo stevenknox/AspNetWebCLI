@@ -23,7 +23,38 @@ namespace AspNetWebCL.Web.Hubs
             {
                 PingCommand(command, hubContext);
             }
-        
+            else if (command.StartsWith("wholeschool zenyatta", System.StringComparison.CurrentCulture))
+            {
+                ZenyattaCommand(command, hubContext);
+            }
+            else if (command.StartsWith("wholeschool dsl", System.StringComparison.CurrentCulture))
+            {
+                DslCommand(command, hubContext);
+            }
+        }
+
+        private void DslCommand(string command, IHubContext hubContext)
+        {
+            var tasks = command.Replace("'", "").Split(' ');
+
+            hubContext.Clients.All.commandResponse("Creating " + tasks[4] + " " + tasks[3]);
+            System.Threading.Thread.Sleep(1000);
+            hubContext.Clients.All.commandResponse("Done.");
+        }
+
+        private void ZenyattaCommand(string command, IHubContext hubContext)
+        {
+            var tasks = command.Replace("'", "").Split(' ');
+
+            hubContext.Clients.All.commandResponse("Configuring " + tasks[3] + " Module System");
+            System.Threading.Thread.Sleep(1000);
+            hubContext.Clients.All.commandResponse("Containers created successfully");
+            System.Threading.Thread.Sleep(1000);
+            hubContext.Clients.All.commandResponse("Components created successfully");
+            System.Threading.Thread.Sleep(1000);
+            hubContext.Clients.All.commandResponse("Fields created successfully");
+            System.Threading.Thread.Sleep(1000);
+            hubContext.Clients.All.commandResponse("Modules System Ready.");
         }
 
         private static void PingCommand(string command, IHubContext hubContext)

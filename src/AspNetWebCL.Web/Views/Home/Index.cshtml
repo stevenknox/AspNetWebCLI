@@ -25,13 +25,21 @@
                     cli.server.sendCommand(command);
                 }
             },
+             //{
+             //    greetings: 'Wholeschool CLI \nWholeschool Software Ltd (C) 2016 \nwww.whole.school\n\ntype "help" to get available commands\n',
+             //    name: 'wholeschool',
+             //    height: 1000,
+             //    width: 1000,
+             //    prompt: 'wholeschool> '
+             //}
             {
                 greetings: 'AspNetCore Web CLI \nSteven Knox (C) 2016 \ntwitter.com/stevenknox101\n\ntype "help" to get available commands\n',
                 name: 'webcli',
                 height: 1000,
                 width: 1000,
                 prompt: 'web-cli> '
-            });
+            }
+            );
 
             cli.client.commandResponse = function (response) {
                 if (response != undefined) {
